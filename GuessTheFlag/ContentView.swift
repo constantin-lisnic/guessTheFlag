@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct boldText: ViewModifier {
+    func body (content: Content) -> some View {
+        content
+        .foregroundStyle(.white)
+        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold())
+    }
+}
+
+extension View {
+    func boldTextStyle() -> some View {
+        modifier(boldText())
+    }
+}
+
 struct FlagImage: View {
     var country: String
     
@@ -38,8 +52,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Guess the Flag")
-                    .font(.largeTitle.weight(.bold))
-                    .foregroundStyle(.white)
+                    .boldTextStyle()
 
                 VStack(spacing: 15) {
                     Text("Tap the flag of")
@@ -66,8 +79,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Score: \(score)")
-                    .foregroundStyle(.white)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold())
+                    .boldTextStyle()
                 
                 Spacer()
             }
